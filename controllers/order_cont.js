@@ -22,7 +22,7 @@ export const addOrder = async (req, res) => {
 // get order
 export const getUserOrders = async (req, res) => {
     try {
-        const orders = await order_model.find({userID:"1"});
+        const orders = await order_model.find({userID:"3"});
         if (orders.length != 0) {
             res.status(200).json({
                 success: true,

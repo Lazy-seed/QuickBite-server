@@ -19,7 +19,9 @@ app.listen(PORT, () => {
 // app.use('/rr', (req, res) => {
 //     res.send("sdsdsd")
 // })
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+app.use(
+    cors({ credentials: true, origin: 'http://localhost:3000' })
+    );
 
 // routes
-app.use('/v1/api',route)
+app.use('/v1/api', route)

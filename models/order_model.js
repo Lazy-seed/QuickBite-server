@@ -5,6 +5,10 @@ const order = mongoose.Schema({
     userID: {
         type: String
     },
+    status: {
+        type: String,
+        default: "preparing"
+    },
     Products: [
         {
             ID: { type: String },
@@ -13,6 +17,22 @@ const order = mongoose.Schema({
         }],
     totalAmt: {
         type: Number
+    },
+    payAmt: {
+        type: Number
+    },
+    couponCode: {
+        type: String
+    },
+    couponAmt: {
+        type: {
+            type: String
+
+        },
+        amt: {
+            type: Number
+
+        }
     },
     paymentMode: {
         type: String
@@ -30,7 +50,7 @@ const order = mongoose.Schema({
         city: {
             type: String
         }
-    }
+    },
 },
 
 
