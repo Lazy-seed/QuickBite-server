@@ -8,7 +8,17 @@ const cart = mongoose.Schema({
     Products: [{ productID: { type: String }, qty: { type: Number } }],
     totalAmt: {
         type: Number
-    }
+    },
+    couponAmt: {
+        type: {
+            type: String
+
+        },
+        amt: {
+            type: Number
+
+        }
+    },
 },
     {
         versionKey: false // You should be aware of the outcome after set to false

@@ -42,19 +42,19 @@ export const getOneProduct = async (req, res) => {
 export const getByCatg = async (req, res) => {
     const catg = req.params.catg
     try {
-        const catgPtoducts = await Product_model.find({catg:catg});
-        if (catgPtoducts.length !=0 ) {
+        const catgPtoducts = await Product_model.find({ catg: catg });
+        if (catgPtoducts.length != 0) {
             res.status(200).json({
                 success: true,
                 catgPtoducts
             })
-        }else{
+        } else {
             res.status(200).json({
                 success: false,
-                msg:"no products"
+                msg: "no products"
             })
         }
-       
+
     } catch (error) {
         res.status(200).json({
             success: false,
@@ -77,6 +77,28 @@ export const addProduct = async (req, res) => {
             success: true,
             msg: "food added",
             product
+        })
+    } catch (error) {
+        res.status(200).json({
+            success: false,
+            msg: "failed",
+            error
+        })
+    }
+}
+
+
+
+// get randoms
+export const getRandomProducts = async (req, res) => {
+    const num = Number(req.params.num)
+    try {
+        const products = await Product_model.aggregate(
+            [{ $sample: { size: num } }]
+        );
+        res.status(200).json({
+            success: true,
+            products
         })
     } catch (error) {
         res.status(200).json({
