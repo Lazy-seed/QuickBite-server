@@ -1,26 +1,31 @@
 import mongoose from 'mongoose'
 
 const user_schema = mongoose.Schema({
-    profileImg:{
-        type:Number
+    profileImg: {
+        type: Number
     },
-    fname:{
-        type:String
+    fname: {
+        type: String
     },
-    lname:{
-        type:String
+    lname: {
+        type: String
     },
-    email:{
-        type:String
+    email: {
+        type: String
     },
-    password:{
-        type:String
+    password: {
+        type: String
     },
-    phone:{
-        type:Number
+    phone: {
+        type: Number
     },
-    coupons:[]
-   
+    userRole: {
+        type: String,
+        default: "public"
+    },
+    tokens: { type: String },
+    coupons: []
+
 })
 
 const user_model = mongoose.model("users", user_schema);

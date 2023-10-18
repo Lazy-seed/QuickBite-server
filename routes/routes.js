@@ -2,7 +2,8 @@ import { Router } from "express";
 import {addProduct,getAllProducts, getByCatg, getOneProduct, getRandomProducts} from '../controllers/Product_cont.js'
 import { addToCart, delCartItem, getCart, uptItemQty } from "../controllers/cart_cont.js";
 import { addOrder, getUserOrders } from "../controllers/order_cont.js";
-import { newUser, uptUser, userDetails } from "../controllers/user_cont.js";
+import { isLogin, login, logoutUser, newUser, uptUser, userDetails } from "../controllers/user_cont.js";
+import { Auth } from "../middleware/Auth.js";
 const route = Router();
 
 // products add
@@ -24,6 +25,10 @@ route.get('/getUserOrders',getUserOrders)
 
 // user
 route.post('/newUser',newUser)
+route.post('/login',login)
+route.get('/isLogin',Auth,isLogin)
+route.get('/logoutUser',Auth,logoutUser)
+
 route.get('/userDetails',userDetails)
 route.post('/uptUser',uptUser)
 
