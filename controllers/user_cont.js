@@ -146,3 +146,22 @@ export const uptUser = async (req, res) => {
         })
     }
 }
+
+
+// all userss
+export const allUsers = async (req, res) => {
+    try {
+        const allUsers = await user_model.find();
+        res.status(200).json({
+            success: true,
+            allUsers
+        })
+    } catch (error) {
+        res.status(200).json({
+            success: false,
+            msg: "failed",
+            error
+        })
+    }
+}
+

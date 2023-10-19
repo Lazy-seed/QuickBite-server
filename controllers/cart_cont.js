@@ -3,7 +3,8 @@ import cart_model from "../models/cart_model.js";
 // add to cart
 export const addToCart = async (req, res) => {
     const data = req.body
-    const { userID, Products } = req.body
+    const {  Products } = req.body
+    const userID = req.userID
     try {
         const userExist = await cart_model.findOne({ userID: userID })
         // if user-cart exist
@@ -38,8 +39,10 @@ export const addToCart = async (req, res) => {
 
 // get cart
 export const getCart = async (req, res) => {
+    userID = req.userID
+
     try {
-        const cart = await cart_model.findOne({ userID: '1' });
+        const cart = await cart_model.findOne({ userID: userID });
         res.status(200).json({
             success: true,
             cart

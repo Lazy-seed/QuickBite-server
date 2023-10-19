@@ -15,6 +15,7 @@ export const Auth = async (req, res, next) => {
         if (!rootUser) { throw new Error('user not foind') };
 
         req.token = token
+        req.userID = rootUser._id
         req.rootUser = rootUser
         next()
 
